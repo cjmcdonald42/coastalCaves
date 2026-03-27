@@ -26,15 +26,15 @@ if choice == "F":           # Choose to Fight
     attackRoll = random.randint(1, 20)
     if attackRoll >= 12: 
         print("Your attack hits and you slay the vile creature")
-        print("Collect your treaure!")
+        print("Collect your treasure!")
     else:
-        print("You swing valiently but miss!")
+        print("You swing valiantly but miss!")
         print("The dragon pins you down and tickles you into a stupor. \n")
 elif choice == "S":         # Choose to Stealth
     stealthRoll = random.randint(1, 20)
     if stealthRoll >= 14:
         print("You get all sneaky-like and move behind the monster to steal its treasure")
-        print("Collect your treaure!")
+        print("Collect your treasure!")
     else:
         print("You're not as sneaky as you though and you wake the beast who then gobbles you up in one bite!")
 else:                        # choice == "R" -- RUN AWAY!
