@@ -14,25 +14,26 @@ while choosingWhosNext:
     # Ask the teacher to spin the wheel
     print("The following students could be next:")
     print(studentList)
-    option = int(input("Would you like to 1) Choose the next volunteer, or 2) End the presentations? (1 | 2): "))
+    choice = int(input("Would you like to 1) Choose the next volunteer, or 2) End the presentations? (1 | 2): "))
 
-    if option == 1:
+    if choice == 1:
         # Randomly choose the next student
         numberOfStudentsRemaining = len(studentList)
         student = random.randint(0, numberOfStudentsRemaining-1)
         # print(student, len(studentList))
         nextPresenter = studentList[student]
         print(f"Next up on our stage: {nextPresenter} \n")
-        if numberOfStudentsRemaining == 1:
-            print("That is the last student \n")
-            choosingWhosNext = False
 
         # Remove that student from the list
         studentList.remove(nextPresenter)
+        if not studentList:
+            print("That is the last student \n")
+            choosingWhosNext = False
 
-    elif option == 2:
+    elif choice == 2:
         # End the Presentation
         print("End of Presentations")
         choosingWhosNext = False
+
     else:
         print("That's not a valid option, please try again. \n")
