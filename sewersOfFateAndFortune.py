@@ -18,27 +18,37 @@ print("""
 
 # Face a challenge --> Fight, Magic, Escape
 print("Suddenly, you are confronted by a fierce sewer monster. \n")
-print("You may (F)ight the fearsome beast, Use (S)tealth to sneak behind it, or (R)un away.")
-choice = input("What will you do? (F/S/R): ")
+playerHealth = 10
+dragonHealth = 10
+playingTheGame = True
+while playingTheGame:
+    print("You may (F)ight the fearsome beast, Use (S)tealth to sneak behind it, or (R)un away.")
+    choice = input("What will you do? (F/S/R): ")
 
-if choice == "F":           # Choose to Fight
-    print("You draw your sword and swing wildly")
-    attackRoll = random.randint(1, 20)
-    if attackRoll >= 12: 
-        print("Your attack hits and you slay the vile creature")
-        print("Collect your treasure!")
-    else:
-        print("You swing valiantly but miss!")
-        print("The dragon pins you down and tickles you into a stupor. \n")
-elif choice == "S":         # Choose to Stealth
-    stealthRoll = random.randint(1, 20)
-    if stealthRoll >= 14:
-        print("You get all sneaky-like and move behind the monster to steal its treasure")
-        print("Collect your treasure!")
-    else:
-        print("You're not as sneaky as you though and you wake the beast who then gobbles you up in one bite!")
-else:                        # choice == "R" -- RUN AWAY!
-    print("You retreat quickly and although you get no treasure, you live to fight another day.")
+    if choice == "F":           # Choose to Fight
+        print("You draw your sword and swing wildly")
+        attackRoll = random.randint(1, 20)
+        if attackRoll >= 12:
+            print("Your attack hits and you slay the vile creature")
+            print("Collect your treasure!")
+            dragonHealth =- 6
+        else:
+            print("You swing valiantly but miss!")
+            print("The dragon pins you down and tickles you into a stupor. \n")
+            playerHealth =- 4
+    elif choice == "S":         # Choose to Stealth
+        stealthRoll = random.randint(1, 20)
+        if stealthRoll >= 14:
+            print("You get all sneaky-like and move behind the monster to steal its treasure")
+            print("Collect your treasure!")
+            dragonHealth =- 4
+        else:
+            print("You're not as sneaky as you though and you wake the beast who then gobbles you up in one bite!")
+    else:                        # choice == "R" -- RUN AWAY!
+        print("You retreat quickly and although you get no treasure, you live to fight another day.")
+        playingTheGame = False
+    if playerHealth < 0 or dragonHealth <0:
+        playingTheGame = False
 
-# Resolution?
+# Resolution
     print("You return to town wiser and possibly richer. Perhaps another trip will yield more treasure.")
